@@ -1,0 +1,45 @@
+# Maven
+target/
+!**/src/main/**/target/
+# Sometimes modules have their own target folders.
+
+# VS Code
+.vscode/
+
+# Selenium WebDriver binaries (drivers folder)
+drivers/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IntelliJ IDEA (in case you or reviewers use it)
+.idea/
+*.iml
+
+# Compiled Java class files
+*.class
+
+# Eclipse files (if applicable)
+.project
+.classpath
+.settings/
+
+# Maven wrapper files (optional if you use Maven wrapper)
+.mvn/
+
+# Temporary files created by editors or OS
+*.tmp
+*.bak
+*.swp
+
+# Coverage reports (if you add coverage later)
+target/site/
+coverage/
+
+# Others (optional)
+# Secrets, keys, env files
+.env
