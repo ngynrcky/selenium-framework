@@ -1,26 +1,26 @@
 package com.ricky.seleniumtest;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.TestInfo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest 
 {
     protected WebDriver driver;
 
-    @BeforeEach
-    public void setUp(TestInfo testInfo) {
-        System.out.println("===== Starting test: " + testInfo.getDisplayName() + " =====");
+    @BeforeMethod
+    public void setUp(ITestResult result) {
+        System.out.println("===== Starting test: " + result.getMethod().getMethodName() + " =====");
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
         driver = new ChromeDriver();
-        // driver.manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
-    @AfterEach
-    public void tearDown() {
-        System.out.println("===== Ending test =====\n");
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        System.out.println("===== Ending test: " + result.getMethod().getMethodName() + " =====");
         if (driver != null) {
             driver.quit();
         }

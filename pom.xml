@@ -19,11 +19,11 @@
       <artifactId>selenium-java</artifactId>
       <version>4.21.0</version>
     </dependency>
-    <!-- JUnit 5 (includes API + Engine) -->
+    <!-- TestNG -->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>5.10.2</version>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.10.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -45,6 +45,9 @@
         <version>3.2.5</version>
         <configuration>
           <useModulePath>false</useModulePath>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
         </configuration>
       </plugin>
     </plugins>
