@@ -12,6 +12,10 @@ public class ExamplePage {
         this.driver = driver;
     }
 
+    public String getTitleText() {
+        return driver.getTitle();
+    }
+
     public String getHeadingText() {
         return driver.findElement(heading).getText();
     }

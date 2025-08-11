@@ -8,12 +8,17 @@ import static org.testng.Assert.assertEquals;
 public class ExampleTest extends BaseTest {
 
     @Test
-    public void headingShouldBeCorrect() {
-        System.out.println("Navigating to login page...");
-        driver.get("https://example.com");
+    public void titleShouldBeCorrect() {
+        String expectedTitle = "Google";
+
+        System.out.println("Navigating to page...");
+        driver.get("https://www.google.com/");
 
         ExamplePage page = new ExamplePage(driver);
+        String titleText = page.getTitleText();
+        System.out.println("Page title: " + titleText);
+
         System.out.println("Asserting page title...");
-        assertEquals("Example Domain", page.getHeadingText());
+        assertEquals(titleText, expectedTitle, "Page title should be '" + expectedTitle + "'");
     }
 }

@@ -14,7 +14,11 @@ public class BaseTest
     public void setUp(ITestResult result) {
         System.out.println("===== Starting test: " + result.getMethod().getMethodName() + " =====");
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+
+        System.out.println("[INFO] Initializing ChromeDriver...");
         driver = new ChromeDriver();
+        System.out.println("[INFO] ChromeDriver initialized.");
+
         driver.manage().window().maximize();
     }
 
@@ -22,7 +26,9 @@ public class BaseTest
     public void tearDown(ITestResult result) {
         System.out.println("===== Ending test: " + result.getMethod().getMethodName() + " =====");
         if (driver != null) {
+            System.out.println("[INFO] Quitting ChromeDriver...");
             driver.quit();
+            System.out.println("[INFO] ChromeDriver quit successfully.");
         }
     }
 }
