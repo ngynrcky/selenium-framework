@@ -1,4 +1,4 @@
-package com.ricky.seleniumtest;
+package com.ricky.seleniumtest.tests;
 
 import com.ricky.seleniumtest.pages.ExamplePage;
 import org.testng.annotations.Test;
