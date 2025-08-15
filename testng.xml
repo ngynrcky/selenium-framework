@@ -3,7 +3,7 @@
 <suite name="UI Automation Suite" verbose="1">
   <test name="All Tests">
     <packages>
-      <package name="com.ricky.seleniumtest"/>
+      <package name="com.ricky.seleniumtest.tests"/>
     </packages>
   </test>
 </suite>
