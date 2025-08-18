@@ -1,4 +1,4 @@
-package com.ricky.seleniumtest.tests;
+package tests;
 
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;

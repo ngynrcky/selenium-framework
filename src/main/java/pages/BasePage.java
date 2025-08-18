@@ -1,4 +1,4 @@
-package com.ricky.seleniumtest.pages;
+package pages;
 
 import java.time.Duration;
 

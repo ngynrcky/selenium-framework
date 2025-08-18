@@ -1,7 +1,8 @@
-package com.ricky.seleniumtest.tests;
+package tests;
 
-import com.ricky.seleniumtest.pages.ExamplePage;
 import org.testng.annotations.Test;
+
+import pages.ExamplePage;
 
 import static org.testng.Assert.assertEquals;
 

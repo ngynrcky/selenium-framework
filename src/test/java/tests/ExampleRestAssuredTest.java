@@ -1,4 +1,4 @@
-package com.ricky.seleniumtest.tests;
+package tests;
 
 import static io.restassured.RestAssured.get;
 import static org.hamcrest.Matchers.equalTo;
