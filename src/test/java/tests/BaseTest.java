@@ -13,8 +13,6 @@ public class BaseTest
     @BeforeMethod
     public void setUp(ITestResult result) {
         System.out.println("===== Starting test: " + result.getMethod().getMethodName() + " =====");
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
-
         System.out.println("[INFO] Initializing ChromeDriver...");
         driver = new ChromeDriver();
         System.out.println("[INFO] ChromeDriver initialized.");

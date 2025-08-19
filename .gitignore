@@ -6,9 +6,6 @@ target/
 # VS Code
 .vscode/
 
-# Selenium WebDriver binaries (drivers folder)
-drivers/
-
 # Logs
 *.log
 

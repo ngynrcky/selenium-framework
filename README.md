@@ -1,4 +1,4 @@
-# Selenium UI Automation Project
+# Selenium Framework
 
 ## Overview
 
@@ -19,10 +19,11 @@ It follows a clean, minimal structure with separation between reusable framework
 - Java JDK 17 or later installed and configured in your `PATH`.  
 - Maven installed and configured in your `PATH`.  
 - Chrome browser installed (for UI tests).
-- ChromeDriver executable downloaded and its path configured in `BaseTest.java` (`System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver")`).
 
-> **Note:** Make sure to download the ChromeDriver version matching your Chrome browser version and OS architecture.  
-> [ChromeDriver downloads](https://chromedriver.chromium.org/downloads)
+⚡ Note on WebDrivers:
+Since Selenium 4.6+, manual driver setup is no longer required.
+Selenium Manager
+ automatically downloads and configures the correct browser driver (ChromeDriver, GeckoDriver, etc.) at runtime.
 
 ---
 
