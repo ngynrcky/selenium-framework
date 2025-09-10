@@ -33,11 +33,11 @@ public class BaseTest
 
     @AfterMethod
     public void tearDown(ITestResult result) {
-        System.out.println("===== Ending test: " + result.getMethod().getMethodName() + " =====");
         if (driver != null) {
             System.out.println("[INFO] Quitting ChromeDriver...");
             driver.quit();
             System.out.println("[INFO] ChromeDriver quit successfully.");
         }
+        System.out.println("===== Ending test: " + result.getMethod().getMethodName() + " =====");
     }
 }

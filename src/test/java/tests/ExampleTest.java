@@ -12,10 +12,9 @@ public class ExampleTest extends BaseTest {
     public void titleShouldBeCorrect() {
         String expectedTitle = "Google";
 
-        System.out.println("Navigating to page...");
-        driver.get("https://www.google.com/");
-
         ExamplePage page = new ExamplePage(driver);
+        page.open();
+        
         String titleText = page.getTitleText();
         System.out.println("Page title: " + titleText);
         assertEquals(titleText, expectedTitle, "Page title should be '" + expectedTitle + "'");
@@ -25,10 +24,9 @@ public class ExampleTest extends BaseTest {
     public void signInButtonShouldBeCorrect() {
         String expectedSignInButtonText = "Sign in";
 
-        System.out.println("Navigating to page...");
-        driver.get("https://www.google.com/");
-
         ExamplePage page = new ExamplePage(driver);
+        page.open();
+
         String signInButtonText = page.getSignInButtonText();
         System.out.println("Sign in button text: " + signInButtonText);
         assertEquals(signInButtonText, expectedSignInButtonText, "Sign in button text should be '" + expectedSignInButtonText + "'");
