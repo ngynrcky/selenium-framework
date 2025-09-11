@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import utils.ConfigReader;
+import utils.ConfigManager;
 
 public abstract class BasePage {
     protected WebDriver driver;
@@ -22,7 +22,7 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.baseUrl = ConfigReader.get("baseUrl");
+        this.baseUrl = ConfigManager.get("baseUrl", "https://www.google.com");
         this.path = "/";
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
     }

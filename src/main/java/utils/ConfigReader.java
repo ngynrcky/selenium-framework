@@ -19,6 +19,7 @@ public class ConfigReader {
         }
     }
 
+    // Only read from config.properties
     public static String get(String key) {
         return props.getProperty(key);
     }
