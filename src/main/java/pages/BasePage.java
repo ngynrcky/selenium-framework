@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,5 +55,13 @@ public abstract class BasePage {
     protected WebElement findClickableElement(By locator, int timeoutSeconds) {
         Wait<WebDriver> customWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
         return customWait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    protected WebElement findElementLeftOf(WebElement reference, By selector) {
+        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(RelativeLocator.with(selector).toLeftOf(reference))));
+    }
+
+    protected WebElement findElementRightOf(WebElement reference, By selector) {
+        return wait.until(ExpectedConditions.visibilityOf(driver.findElement(RelativeLocator.with(selector).toRightOf(reference))));
     }
 }

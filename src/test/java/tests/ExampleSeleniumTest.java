@@ -6,6 +6,9 @@ import org.testng.annotations.Test;
 import pages.ExamplePage;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+import org.openqa.selenium.WebElement;
 
 public class ExampleSeleniumTest extends BaseTest {
 
@@ -41,5 +44,14 @@ public class ExampleSeleniumTest extends BaseTest {
 
         // Assert: verify actual vs expected
         assertEquals(signInButtonText, expectedSignInButtonText, "Sign in button text should be '" + expectedSignInButtonText + "'");
+    }
+
+    @Test
+    public void appButtonShouldBeToTheLeftOfTheSignInButton() {
+        // Act: get the apps button
+        WebElement appsButton = examplePage.getAppsButton();
+
+        // Assert: verify apps button is displayed
+        assertTrue(appsButton.isDisplayed(), "Apps button is displayed");
     }
 }
