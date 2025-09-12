@@ -6,7 +6,7 @@ import pages.ExamplePage;
 
 import static org.testng.Assert.assertEquals;
 
-public class ExampleTest extends BaseTest {
+public class ExampleSeleniumTest extends BaseTest {
 
     @Test
     public void titleShouldBeCorrect() {
