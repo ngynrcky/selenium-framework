@@ -16,7 +16,7 @@ It follows a clean, minimal structure with separation between reusable framework
 
 ## Prerequisites
 
-- Java JDK 17 or later installed and configured in your `PATH`.  
+- Java JDK 21 or later installed and configured in your `PATH`.  
 - Maven installed and configured in your `PATH`.  
 - Chrome browser installed (for UI tests).
 
