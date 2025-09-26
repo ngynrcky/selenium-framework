@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebElement;
 
-public class ExampleSeleniumTest extends BaseTest {
+public class ExampleSeleniumTest extends BaseUITest {
 
     private ExamplePage examplePage;
 
