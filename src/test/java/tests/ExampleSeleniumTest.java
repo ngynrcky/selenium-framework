@@ -1,14 +1,12 @@
 package tests;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import pages.ExamplePage;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.ExamplePage;
 
 public class ExampleSeleniumTest extends BaseUITest {
 
@@ -24,7 +22,7 @@ public class ExampleSeleniumTest extends BaseUITest {
     public void titleShouldBeCorrect() {
         // Arrange: define expected page title
         String expectedTitle = "Google";
-        
+
         // Act: get the actual page title
         String titleText = examplePage.getTitleText();
         System.out.println("Page title: " + titleText);
@@ -43,7 +41,10 @@ public class ExampleSeleniumTest extends BaseUITest {
         System.out.println("Sign in button text: " + signInButtonText);
 
         // Assert: verify actual vs expected
-        assertEquals(signInButtonText, expectedSignInButtonText, "Sign in button text should be '" + expectedSignInButtonText + "'");
+        assertEquals(
+                signInButtonText,
+                expectedSignInButtonText,
+                "Sign in button text should be '" + expectedSignInButtonText + "'");
     }
 
     @Test

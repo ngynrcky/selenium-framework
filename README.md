@@ -27,6 +27,32 @@ Selenium Manager
 
 ---
 
+## Code Formatting
+
+This project uses [Palantir Java Format](https://github.com/palantir/palantir-java-format) (via Spotless) for consistent code style.
+
+**First-time setup (required):**
+```bash
+# Unix/Mac
+./scripts/setup-hooks.sh
+
+# Windows
+scripts\setup-hooks.bat
+```
+This installs a Git pre-commit hook that validates formatting before each commit.
+
+**Formatting your code:**
+```bash
+# Check formatting
+mvn verify
+
+# Auto-format all files
+mvn spotless:apply
+```
+IDE Integration (optional): Install the Palantir Java Format plugin for your IDE (VS Code, IntelliJ, Eclipse) to enable format-on-save. The pre-commit hook will enforce formatting regardless of your IDE choice.
+
+---
+
 ## Running Tests
 
 1. Open a terminal at the project root directory.  
@@ -34,3 +60,4 @@ Selenium Manager
 
 ```bash
 mvn clean test
+```

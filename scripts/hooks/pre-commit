@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Pre-commit hook to check Java code formatting using Palantir Java Format
+
+echo "Running Palantir Java Format check..."
+
+# Run the format check
+mvn spotless:check -q
+
+# Capture the exit code
+FORMAT_CHECK=$?
+
+if [ $FORMAT_CHECK -ne 0 ]; then
+    echo ""
+    echo "❌ Code formatting check FAILED!"
+    echo ""
+    echo "Your code is not properly formatted according to Palantir Java Format."
+    echo ""
+    echo "To fix formatting issues, run:"
+    echo "  mvn spotless:apply"
+    echo ""
+    echo "Or use the Maven profile:"
+    echo "  mvn process-sources -Pformat"
+    echo ""
+    echo "Or format in VS Code with Shift+Alt+F (ensure palantir-java-format extension is installed)"
+    echo ""
+    exit 1
+fi
+
+echo "✅ Code formatting check passed!"
+exit 0
