@@ -43,8 +43,11 @@ This installs a Git pre-commit hook that validates formatting before each commit
 
 **Formatting your code:**
 ```bash
-# Check formatting
-mvn verify
+# Quick format check only
+mvn spotless:check
+
+# Full project verification without tests (includes formatting + compilation)
+mvn verify -DskipTests
 
 # Auto-format all files
 mvn spotless:apply
