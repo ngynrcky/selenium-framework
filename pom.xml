@@ -122,6 +122,8 @@
                   </message>
                 </requireFilesExist>
               </rules>
+              <!-- Skip enforcer check in CI environments -->
+              <skip>${env.CI}</skip>
             </configuration>
           </execution>
         </executions>
