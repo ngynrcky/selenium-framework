@@ -4,11 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import utils.DriverFactory;
 
-public class BaseUITest
-{
+public class BaseUITest {
     protected WebDriver driver;
 
     @BeforeMethod

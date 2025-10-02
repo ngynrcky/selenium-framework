@@ -8,8 +8,7 @@ public class ConfigReader {
     private static Properties props = new Properties();
 
     static {
-        try (InputStream input = ConfigReader.class.getClassLoader()
-                .getResourceAsStream("config.properties")) {
+        try (InputStream input = ConfigReader.class.getClassLoader().getResourceAsStream("config.properties")) {
             if (input == null) {
                 throw new RuntimeException("config.properties not found in resources folder");
             }

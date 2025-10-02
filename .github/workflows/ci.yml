@@ -1,4 +1,4 @@
-name: Run TestNG Tests
+name: CI
 
 on:
   push:
@@ -9,22 +9,39 @@ on:
       - main
 
 jobs:
-  test:
+  format-check:
     runs-on: ubuntu-latest
-    env:
-      BROWSER: chrome
-      HEADLESS: true
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      
       - name: Set up JDK 21 with Maven cache
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
+      
+      - name: Check code formatting
+        run: mvn spotless:check
 
+  test:
+    runs-on: ubuntu-latest
+    needs: format-check  # Only run tests if formatting passes
+    env:
+      BROWSER: chrome
+      HEADLESS: true
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up JDK 21 with Maven cache
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+      
       - name: Run TestNG tests with Maven
         run: mvn clean test
