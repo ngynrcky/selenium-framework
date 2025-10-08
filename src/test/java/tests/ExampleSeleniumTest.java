@@ -14,45 +14,45 @@ public class ExampleSeleniumTest extends BaseUITest {
 
     @BeforeMethod
     public void openExamplePage() {
-        examplePage = new ExamplePage(driver);
+        examplePage = new ExamplePage(driver, "/selenium-playground/");
         examplePage.open();
     }
 
     @Test
     public void titleShouldBeCorrect() {
         // Arrange: define expected page title
-        String expectedTitle = "Google";
+        String expectedTitle = "Selenium Grid Online";
 
         // Act: get the actual page title
-        String titleText = examplePage.getTitleText();
-        System.out.println("Page title: " + titleText);
+        String actualTitle = examplePage.getTitleText();
+        System.out.println("Page title: " + actualTitle);
 
         // Assert: verify actual vs expected
-        assertEquals(titleText, expectedTitle, "Page title should be '" + expectedTitle + "'");
+        assertTrue(actualTitle.contains(expectedTitle), "Page title should contain '" + expectedTitle + "'");
     }
 
     @Test
     public void signInButtonShouldBeCorrect() {
         // Arrange: define expected button text
-        String expectedSignInButtonText = "Sign in";
+        String expectedSignUpButtonText = "Get Started Free";
 
         // Act: get the actual button text
-        String signInButtonText = examplePage.getSignInButtonText();
-        System.out.println("Sign in button text: " + signInButtonText);
+        String actualSignUpButtonText = examplePage.getSignUpButtonText();
+        System.out.println("Sign Up button text: " + actualSignUpButtonText);
 
         // Assert: verify actual vs expected
         assertEquals(
-                signInButtonText,
-                expectedSignInButtonText,
-                "Sign in button text should be '" + expectedSignInButtonText + "'");
+                actualSignUpButtonText,
+                expectedSignUpButtonText,
+                "Sign up button text should be '" + expectedSignUpButtonText + "'");
     }
 
     @Test
-    public void appButtonShouldBeToTheLeftOfTheSignInButton() {
+    public void demoButtonShouldBeToTheLeftOfTheSignUpButton() {
         // Act: get the apps button
-        WebElement appsButton = examplePage.getAppsButton();
+        WebElement demoButton = examplePage.getDemoButton();
 
         // Assert: verify apps button is displayed
-        assertTrue(appsButton.isDisplayed(), "Apps button is displayed");
+        assertTrue(demoButton.isDisplayed(), "Demo button is displayed");
     }
 }

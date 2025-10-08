@@ -6,26 +6,30 @@ import org.openqa.selenium.WebElement;
 
 public class ExamplePage extends BasePage {
 
-    private By appsButton = By.cssSelector("[aria-label='Google apps']");
-    private By signInButton = By.cssSelector("[aria-label='Sign in']");
+    private By demoButton = By.xpath("//button[contains(@class,'demo_header_btn')]");
+    private By signUpButton = By.xpath("//a[contains(@class,'signup')]");
 
     public ExamplePage(WebDriver driver) {
         super(driver);
+    }
+
+    public ExamplePage(WebDriver driver, String customPath) {
+        super(driver, customPath);
     }
 
     public String getTitleText() {
         return driver.getTitle();
     }
 
-    public WebElement getAppsButton() {
-        return findElementLeftOf(getSignInButton(), appsButton);
+    public WebElement getDemoButton() {
+        return findElementLeftOf(getSignUpButton(), demoButton);
     }
 
-    public WebElement getSignInButton() {
-        return findVisibleElement(signInButton);
+    public WebElement getSignUpButton() {
+        return findVisibleElement(signUpButton);
     }
 
-    public String getSignInButtonText() {
-        return getSignInButton().getText();
+    public String getSignUpButtonText() {
+        return getSignUpButton().getText();
     }
 }
