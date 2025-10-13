@@ -10,7 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseApiTest {
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp(ITestResult result) {
         System.out.println("===== Starting test: " + result.getMethod().getMethodName() + " =====");
         filters(
@@ -19,7 +19,7 @@ public class BaseApiTest {
                 new ResponseLoggingFilter(LogDetail.STATUS));
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
         System.out.println("===== Ending test: " + result.getMethod().getMethodName() + " =====");
     }

@@ -12,13 +12,13 @@ public class ExampleSeleniumTest extends BaseUITest {
 
     private ExamplePage examplePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void openExamplePage() {
         examplePage = new ExamplePage(driver, "/selenium-playground/");
         examplePage.open();
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void titleShouldBeCorrect() {
         // Arrange: define expected page title
         String expectedTitle = "Selenium Grid Online";

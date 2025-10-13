@@ -9,7 +9,7 @@ import utils.DriverFactory;
 public class BaseUITest {
     protected WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp(ITestResult result) {
         System.out.println("===== Starting test: " + result.getMethod().getMethodName() + " =====");
         System.out.println("[INFO] Initializing WebDriver...");
@@ -19,7 +19,7 @@ public class BaseUITest {
         System.out.println("[INFO] WebDriver initialized.");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
         if (driver != null) {
             System.out.println("[INFO] Quitting WebDriver...");

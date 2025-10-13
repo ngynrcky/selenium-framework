@@ -25,11 +25,41 @@ jobs:
       - name: Check code formatting
         run: mvn spotless:check
 
+  api-tests:
+    runs-on: ubuntu-latest
+    needs: format-check  # Only run tests if formatting passes
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up JDK 21 with Maven cache
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+      
+      - name: Run API tests
+        run: mvn clean test -DsuiteXmlFile=src/test/resources/suites/testng-api.xml
+
+      - name: Upload API test report
+        if: always()  # ensure it runs even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-reports
+          path: target/surefire-reports/**
+          if-no-files-found: ignore
+  
   test:
     runs-on: ubuntu-latest
     needs: format-check  # Only run tests if formatting passes
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
+      fail-fast: false # Continue running other browsers even if one fails
     env:
-      BROWSER: chrome
+      BROWSER: ${{ matrix.browser }}
       HEADLESS: true
     
     steps:
@@ -43,13 +73,13 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
       
-      - name: Run TestNG tests with Maven
-        run: mvn clean test
+      - name: Run UI tests on ${{ matrix.browser }}
+        run: mvn clean test -DsuiteXmlFile=src/test/resources/suites/testng-ui.xml
 
-      - name: Upload TestNG report
+      - name: Upload UI test report for ${{ matrix.browser }}
         if: always()  # ensure it runs even if tests fail
         uses: actions/upload-artifact@v4
         with:
-          name: testng-reports
+          name: ui-test-reports-${{ matrix.browser }}
           path: target/surefire-reports/**
           if-no-files-found: ignore
