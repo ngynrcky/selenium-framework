@@ -11,8 +11,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class DriverFactory {
 
     public static WebDriver createDriver() {
-        String browser = ConfigManager.get("browser", "chrome"); // default chrome
-        boolean headless = Boolean.parseBoolean(ConfigManager.get("headless", "false"));
+        String browser = ConfigManager.get("browser");
+        boolean headless = Boolean.parseBoolean(ConfigManager.get("headless"));
 
         switch (browser.toLowerCase()) {
             case "firefox":

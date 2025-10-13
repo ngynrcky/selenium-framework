@@ -10,7 +10,7 @@ public class ConfigManager {
      * 3. config.properties file
      * 4. defaultValue
      */
-    public static String get(String key, String defaultValue) {
+    public static String get(String key) {
         String systemProp = System.getProperty(key);
         if (systemProp != null) return systemProp;
 
@@ -22,6 +22,9 @@ public class ConfigManager {
         String propFile = ConfigReader.get(key); // falls back to config.properties
         if (propFile != null) return propFile;
 
-        return defaultValue;
+        throw new IllegalStateException(String.format(
+                "Configuration value for '%s' not found. " + "Please set it via: system property (-D%s), "
+                        + "environment variable (%s), or config.properties",
+                key, key, envKey));
     }
 }

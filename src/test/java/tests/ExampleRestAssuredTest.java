@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class ExampleRestAssuredTest extends BaseApiTest {
 
-    @Test
+    @Test(groups = "smoke")
     public void exampleApiTest() {
         String url = "https://jsonplaceholder.typicode.com/todos/1";
         String schemaPath = "schemas/jsonplaceholder/todos-schema.json";

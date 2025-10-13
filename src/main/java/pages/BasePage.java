@@ -21,7 +21,7 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.baseUrl = ConfigManager.get("baseUrl", "https://www.google.com");
+        this.baseUrl = ConfigManager.get("baseUrl");
         this.path = "/";
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
     }
