@@ -16,6 +16,7 @@
     <restassured.version>5.5.6</restassured.version>
     <selenium.version>4.21.0</selenium.version>
     <suiteXmlFile>src/test/resources/suites/testng.xml</suiteXmlFile>
+    <test.output.dir>default</test.output.dir>
     <testng.version>7.10.2</testng.version>
   </properties>
 
@@ -69,6 +70,7 @@
           <suiteXmlFiles>
             <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
           </suiteXmlFiles>
+          <reportsDirectory>${project.build.directory}/surefire-reports/${test.output.dir}</reportsDirectory>
         </configuration>
       </plugin>
       <!-- Spotless Plugin with Palantir Java Format -->
