@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven 'Maven 3.9.11'
+    }
+    
+    stages {
+        stage('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
+        
+        stage('Tests') {
+            parallel {
+                stage('API Tests') {
+                    steps {
+                        sh 'mvn test -DsuiteXmlFile=src/test/resources/suites/testng-api.xml -Dtest.output.dir=api'
+                    }
+                }
+                
+                stage('UI Tests - Chrome') {
+                    steps {
+                        sh 'mvn test -DsuiteXmlFile=src/test/resources/suites/testng-ui.xml -Dheadless=true -Dbrowser=chrome -Dtest.output.dir=ui-chrome'
+                    }
+                }
+                
+                stage('UI Tests - Firefox') {
+                    steps {
+                        sh 'mvn test -DsuiteXmlFile=src/test/resources/suites/testng-ui.xml -Dheadless=true -Dbrowser=firefox -Dtest.output.dir=ui-firefox'
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Publish TestNG results
+            step([$class: 'Publisher', reportFilenamePattern: '**/surefire-reports/**/testng-results.xml'])
+        }
+    }
+}
