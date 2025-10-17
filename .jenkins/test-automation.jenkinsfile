@@ -6,14 +6,6 @@ pipeline {
     }
     
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'feature/integration-with-jenkins',
-                    url: 'https://github.com/ngynrcky/selenium-framework',
-                    credentialsId: '250d7384-c396-49d6-843b-26c8b9f19cbe'
-            }
-        }
-        
         stage('Clean') {
             steps {
                 sh 'mvn clean'
