@@ -1,6 +1,12 @@
 pipeline {
     agent any
     
+    parameters {
+        booleanParam(name: 'RUN_API_TESTS', defaultValue: true, description: 'Run API tests')
+        booleanParam(name: 'RUN_CHROME_TESTS', defaultValue: true, description: 'Run Chrome tests')
+        booleanParam(name: 'RUN_FIREFOX_TESTS', defaultValue: true, description: 'Run Firefox tests')
+    }
+
     tools {
         maven 'Maven 3.9.11'
     }
@@ -15,18 +21,27 @@ pipeline {
         stage('Tests') {
             parallel {
                 stage('API Tests') {
+                    when {
+                        expression { params.RUN_API_TESTS == true }
+                    }
                     steps {
                         sh 'mvn test -DsuiteXmlFile=src/test/resources/suites/testng-api.xml -Dtest.output.dir=api'
                     }
                 }
                 
                 stage('UI Tests - Chrome') {
+                    when {
+                        expression { params.RUN_CHROME_TESTS == true }
+                    }
                     steps {
                         sh 'mvn test -DsuiteXmlFile=src/test/resources/suites/testng-ui.xml -Dheadless=true -Dbrowser=chrome -Dtest.output.dir=ui-chrome'
                     }
                 }
                 
                 stage('UI Tests - Firefox') {
+                    when {
+                        expression { params.RUN_FIREFOX_TESTS == true }
+                    }
                     steps {
                         sh 'mvn test -DsuiteXmlFile=src/test/resources/suites/testng-ui.xml -Dheadless=true -Dbrowser=firefox -Dtest.output.dir=ui-firefox'
                     }
